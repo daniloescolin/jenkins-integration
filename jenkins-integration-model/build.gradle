@@ -1,0 +1,23 @@
+String mavenGroupId = 'gt.com.gyt.seguros'
+String mavenVersion = '1.0.0'
+
+String mavenArtifactId = name
+
+group = mavenGroupId
+version = mavenVersion
+
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        groupId = mavenGroupId
+        artifactId = mavenArtifactId
+        version = mavenVersion
+    }
+}
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = ''
+}
+
+dependencies {
+    compile group:'org.eclipse.persistence', name: 'eclipselink', version: '2.5.1'      
+}

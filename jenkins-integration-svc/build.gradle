@@ -1,0 +1,10 @@
+plugins {
+  id "com.orctom.was" version "1.1"
+}
+
+
+description = "jenkins-integration-web"
+
+dependencies {  
+
+}

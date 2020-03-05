@@ -1,0 +1,10 @@
+plugins {
+  id "com.orctom.was" version "1.1"
+}
+
+
+description = "jenkins-integration-web"
+
+dependencies {
+	compile group: 'gt.com.gyt.seguros', name: 'jenkins-integration-model', version: '1.0.0-SNAPSHOT'  
+}

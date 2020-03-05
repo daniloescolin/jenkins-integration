@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+  <!-- see http://tomee.apache.org/containers-and-resources.html -->
+
+  <!-- activate next line to be able to deploy applications in apps -->
+  <!-- <Deployments dir="apps" /> -->
+  	
+	<Resource id="jdbc/ApiGatewayDS" type="DataSource">    
+		<!-- jdbcDriver = com.mysql.jdbc.jdbc2.optional.MysqlXADataSource-->
+		jdbcDriver = com.mysql.jdbc.Driver
+		JtaManaged  = true
+		initialSize = 0
+		maxActive  = 100	
+		jdbcUrl = jdbc:mysql://dblb.prueba.gyt.com.gt:8010/API_GATEWAY
+		password = Seguros2017
+		userName = walli  
+		ValidationQuery =  SELECT 1
+		TestWhileIdle = true
+		TimeBetweenEvictionRunsMillis = 3600000	
+	</Resource>
+
+</tomee>

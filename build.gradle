@@ -1,0 +1,48 @@
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.com.orctom.gradle:gradle-applyscript-plugin:1.1"
+    classpath "com.bmuschko:gradle-nexus-plugin:2.3.1"
+  }
+}
+
+plugins {
+  id "org.sonarqube" version "2.7"
+}
+
+apply plugin: 'base' // To add "clean" task to the root project.
+
+subprojects {
+    apply from: rootProject.file('common.gradle')
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+    }
+}
+
+project(':jenkins-integration-dao') {
+    dependencies {
+        compile project(':jenkins-integration-model')
+    }
+}
+
+project(':jenkins-integration-svc') {
+    dependencies {
+        compile project(':jenkins-integration-dao')
+    }
+}
+
+project(':jenkins-integration-web') {
+    dependencies {
+        compile project(':jenkins-integration-svc')
+    }
+}
+
+apply from: file('check.gradle')
+

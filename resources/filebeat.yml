@@ -1,0 +1,17 @@
+output:
+  logstash:
+    enabled: true
+    hosts:
+      - logging.desarrollo.gyt.com.gt:5044
+    timeout: 15
+
+filebeat:
+  prospectors:
+    -
+     paths:
+        - /opt/var/logs/api-gateway/*
+     fields: {log_type: log4j2}
+     multiline.pattern: '^[[:space:]]+|^Caused by:'
+     multiline.negate: false
+     multiline.match: after
+     index: log4j2

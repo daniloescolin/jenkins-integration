@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+  <!-- see http://tomee.apache.org/containers-and-resources.html -->
+
+  <!-- activate next line to be able to deploy applications in apps -->
+  <!-- <Deployments dir="apps" /> -->
+  	
+	<Resource id="jdbc/ApiGatewayDS" type="DataSource">    
+		<!-- jdbcDriver = com.mysql.jdbc.jdbc2.optional.MysqlXADataSource-->
+		jdbcDriver = com.mysql.jdbc.Driver
+		JtaManaged  = true
+		initialSize = 0
+		maxActive  = 100	
+		jdbcUrl = jdbc:mysql://db.cloud-desa.gyt.com.gt:3306/API_GATEWAY
+		userName = walli-db
+		password = d35940f57
+		ValidationQuery =  SELECT 1
+		TestWhileIdle = true
+		TimeBetweenEvictionRunsMillis = 3600000	
+	</Resource>
+
+</tomee>
